@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Law - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #059669;
+            --page-accent-light: #10b981;
+            --page-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(16, 185, 129, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(5, 150, 105, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(5, 150, 105, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(5, 150, 105, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(5, 150, 105, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(5, 150, 105, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(16, 185, 129, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Corporate Law</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Corporate Law</span><br>
+                    Business Governance & Legal Compliance
+                </h1>
+                <p>
+                    Comprehensive guide to corporate law, business formation, compliance, governance, and commercial regulations. 
+                    Understand legal frameworks for businesses, corporate governance, mergers & acquisitions, and regulatory compliance.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">🏢</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Corporate Law</h2>
+            <p class="section-intro">
+                Corporate law governs the formation, operation, and dissolution of corporations, ensuring legal compliance, 
+                protecting stakeholders' rights, and maintaining business integrity in commercial activities.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        Corporate law encompasses the legal framework that regulates corporations, including their formation, 
+                        governance, financing, operations, mergers, acquisitions, and dissolution. It establishes the rights 
+                        and responsibilities of shareholders, directors, officers, and other stakeholders while ensuring 
+                        compliance with regulatory requirements.
+                    </p>
+
+                    <h3>The Purpose of Corporate Law</h3>
+                    <p>
+                        Corporate law serves to facilitate business organization, protect investors and creditors, 
+                        ensure corporate accountability, promote economic efficiency, and maintain market integrity. 
+                        It provides the legal structure that enables businesses to raise capital, manage risk, and 
+                        operate within established legal boundaries while balancing various stakeholder interests.
+                    </p>
+
+                    <h3>Types of Business Entities</h3>
+                    <p>
+                        Corporate law governs various business structures including private limited companies, 
+                        public limited companies, limited liability partnerships (LLPs), partnerships, and sole 
+                        proprietorships. Each structure offers different levels of liability protection, tax 
+                        implications, compliance requirements, and governance frameworks tailored to business needs.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🏛️</div>
+                        <div class="highlight-text">
+                            <h4>Corporate Governance</h4>
+                            <p>Framework for directing and controlling companies through boards and committees</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">📊</div>
+                        <div class="highlight-text">
+                            <h4>Regulatory Compliance</h4>
+                            <p>Adherence to Companies Act, SEBI regulations, and corporate laws</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🤝</div>
+                        <div class="highlight-text">
+                            <h4>Stakeholder Protection</h4>
+                            <p>Safeguarding rights of shareholders, creditors, and other stakeholders</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖️</div>
+                        <div class="highlight-text">
+                            <h4>Legal Entity Status</h4>
+                            <p>Corporations as separate legal entities with perpetual succession</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Essential Corporate Law Principles</h2>
+            <p class="section-intro">
+                Fundamental legal principles and frameworks that govern corporate entities and business operations
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Separate Legal Entity</h3>
+                    <p>
+                        A corporation is recognized as a separate legal entity distinct from its shareholders 
+                        and directors. This principle allows companies to own property, enter contracts, sue 
+                        and be sued in their own name, and provides limited liability protection to shareholders 
+                        for corporate debts and obligations.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Limited Liability Protection</h3>
+                    <p>
+                        Shareholders' liability is limited to their investment in the company, protecting 
+                        personal assets from corporate debts and legal claims. This fundamental principle 
+                        encourages investment and entrepreneurship by reducing personal financial risk for 
+                        investors and business owners.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Corporate Governance Framework</h3>
+                    <p>
+                        Companies must establish proper governance structures including boards of directors, 
+                        audit committees, and compliance mechanisms. This ensures accountability, transparency, 
+                        and ethical decision-making while protecting stakeholder interests and maintaining 
+                        regulatory compliance.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Shareholder Rights Protection</h3>
+                    <p>
+                        Corporate law safeguards shareholder rights including voting rights, dividend entitlements, 
+                        information access, and participation in major corporate decisions. Mechanisms exist for 
+                        minority shareholder protection and prevention of oppression and mismanagement.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Regulatory Compliance Obligations</h3>
+                    <p>
+                        Corporations must comply with extensive regulatory requirements including financial 
+                        reporting, disclosure norms, corporate social responsibility, and various sector-specific 
+                        regulations. Non-compliance can result in penalties, legal actions, and reputational damage.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Mergers & Acquisitions Regulation</h3>
+                    <p>
+                        Corporate law provides frameworks for mergers, acquisitions, amalgamations, and 
+                        corporate restructuring. These regulations ensure fair valuation, protect stakeholder 
+                        interests, prevent monopolistic practices, and maintain market competition through 
+                        proper oversight and approval processes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Corporate Law Cases</h2>
+            <p class="section-intro">
+                Historic judgments that established fundamental principles and frameworks in corporate law
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Salomon v. Salomon & Co. Ltd. (1897)</h3>
+                <p class="case-content">
+                    This foundational English case established the principle of corporate personality and 
+                    limited liability. Aaron Salomon incorporated his business as a limited company with 
+                    himself and family members as shareholders. When the company failed, creditors argued 
+                    Salomon should be personally liable for company debts.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The House of Lords upheld the separate legal entity doctrine, 
+                    establishing that a properly incorporated company is a separate legal person distinct 
+                    from its shareholders, creating the foundation for modern corporate law worldwide.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Foss v. Harbottle (1843)</h3>
+                <p class="case-content">
+                    This landmark case established the proper plaintiff principle and the rule of majority 
+                    control in corporate governance. Minority shareholders sued company directors for 
+                    alleged misconduct, but the majority shareholders supported the directors' actions.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The court established that individual shareholders cannot 
+                    sue for wrongs done to the company - the company itself must be the plaintiff. This 
+                    created the foundation for derivative actions and majority rule principles in corporate law.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Diamond v. Chakrabarty (1980)</h3>
+                <p class="case-content">
+                    This US Supreme Court case addressed whether genetically modified organisms could be 
+                    patented. A microbiologist developed a bacterium capable of breaking down crude oil, 
+                    but the patent office rejected the patent application arguing living things weren't patentable.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The Court held that genetically engineered microorganisms 
+                    were patentable, establishing that human-made living organisms constitute patentable 
+                    subject matter, significantly impacting biotechnology and pharmaceutical corporations.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about corporate law, business formation, compliance, and governance
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the different types of business entities in India?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            India offers several business entity options: Private Limited Company (most popular 
+                            for startups and growing businesses), Public Limited Company (for larger enterprises 
+                            with public shareholding), Limited Liability Partnership (LLP - hybrid with limited 
+                            liability and partnership flexibility), Partnership Firm (unincorporated with 
+                            unlimited liability), Sole Proprietorship (single ownership with unlimited liability), 
+                            One Person Company (OPC - single member company), and Section 8 Company (for non-profit 
+                            organizations). Each structure has different compliance requirements, liability protection, 
+                            tax implications, and governance frameworks. The choice depends on factors like business 
+                            size, funding requirements, risk tolerance, and growth plans.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the key compliance requirements for private limited companies?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Private limited companies must comply with: Annual financial statements preparation 
+                            and filing, Annual return filing with Registrar of Companies, Income tax returns 
+                            and advance tax payments, GST registration and returns (if applicable), Board meetings 
+                            (minimum 4 per year with maximum 120 days gap), Annual General Meeting (once per year), 
+                            Statutory audits by qualified auditors, Maintenance of statutory registers and records, 
+                            Director identification number (DIN) and digital signature certificate (DSC) compliance, 
+                            Share allotment and transfer formalities, and Compliance with specific industry regulations. 
+                            Additional requirements apply for companies meeting certain thresholds for paid-up capital, 
+                            turnover, or borrowing. Non-compliance can result in penalties, prosecution, and disqualification of directors.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the difference between directors and shareholders?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Shareholders are the owners of the company who invest capital and hold shares representing 
+                            ownership interest. Their main rights include voting on major decisions, receiving dividends, 
+                            and participating in company assets upon liquidation. Directors are appointed by shareholders 
+                            to manage the company's affairs and make day-to-day operational decisions. Key differences: 
+                            Shareholders own the company, directors manage it; Shareholders have limited liability, 
+                            directors have fiduciary duties and potential personal liability; Shareholders exercise 
+                            control through voting, directors through board resolutions; Shareholders receive profits 
+                            as dividends, directors receive salaries or fees; All companies must have directors, but 
+                            shareholders may vary in number. Directors owe fiduciary duties to act in the company's 
+                            best interests, while shareholders primarily seek return on investment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the legal requirements for company incorporation?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Company incorporation requires: Minimum 2 shareholders and 2 directors for private 
+                            companies (1 for OPC), Minimum authorized capital (no minimum requirement now, but 
+                            appropriate capital based on business needs), Digital Signature Certificates (DSC) 
+                            for all proposed directors, Director Identification Number (DIN) for all directors, 
+                            Reservation and approval of company name through RUN service, Registered office address 
+                            proof, Memorandum of Association (defining company objectives and capital structure), 
+                            Articles of Association (internal rules and regulations), Declaration by professionals 
+                            and subscribers, and Various forms and documents filed with Registrar of Companies. 
+                            The process typically takes 10-15 days and involves obtaining Certificate of Incorporation 
+                            and Business Identification Number (BIN). Post-incorporation, companies must obtain 
+                            PAN, TAN, open bank accounts, and comply with other regulatory requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the legal requirements for mergers and acquisitions?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            M&A transactions require compliance with: Companies Act, 2013 provisions for schemes 
+                            of arrangement, Competition Commission of India (CCI) approval for combinations meeting 
+                            specified thresholds, Securities and Exchange Board of India (SEBI) regulations for 
+                            listed companies, Stock exchange listing agreements and disclosure requirements, 
+                            Income Tax Act provisions for tax-neutral mergers, Foreign Exchange Management Act 
+                            (FEMA) regulations for cross-border transactions, Sector-specific regulatory approvals 
+                            (RBI for banking, IRDAI for insurance, etc.), Due diligence of legal, financial, and 
+                            operational aspects, Shareholder and creditor approvals as required, NCLT approval 
+                            for schemes of arrangement, and Compliance with labor laws and employee protection 
+                            provisions. The process involves detailed documentation including scheme documents, 
+                            valuation reports, and various applications to regulatory authorities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the director's fiduciary duties and liabilities?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Directors owe fiduciary duties including: Duty to act in good faith and in company's 
+                            best interests, Duty to exercise care, skill, and diligence, Duty to avoid conflicts 
+                            of interest, Duty not to make secret profits, Duty to act within powers conferred 
+                            by Memorandum and Articles, and Duty to protect company property. Directors can be 
+                            held liable for: Breach of fiduciary duties, Fraudulent or wrongful trading, 
+                            Non-compliance with statutory obligations, Tax defaults, Environmental violations, 
+                            and Offenses under specific statutes. Liabilities can be civil (compensation, damages) 
+                            or criminal (fines, imprisonment). Protection measures include: Maintaining proper 
+                            records and minutes, Seeking professional advice when needed, Obtaining directors 
+                            and officers (D&O) insurance, Conducting due diligence, and Ensuring compliance 
+                            with all legal requirements. The Companies Act, 2013 specifically codifies directors' 
+                            duties and provides for both civil and criminal consequences for breaches.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html#home">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Know Your Rights</h4>
+                <div class="footer-links">
+                    <a href="../rights/fundamentalrights.html">Fundamental Rights</a>
+                    <a href="../rights/legalprotections.html">Legal Protections</a>
+                    <a href="../laws/corporatelaw.html">Corporate Law</a>
+                    <a href="../rights/propertyhousing.html">Property & Housing</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

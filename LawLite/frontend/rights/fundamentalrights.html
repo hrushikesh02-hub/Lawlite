@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Rights - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #dc2626;
+            --page-accent-light: #ef4444;
+            --page-gradient: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(220, 38, 38, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(220, 38, 38, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Fundamental Rights</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Fundamental Rights</span><br>
+                    Your Constitutional Guarantees
+                </h1>
+                <p>
+                    Every citizen has constitutional rights including equality, freedom of speech, right to life 
+                    and personal liberty, and protection against discrimination. These rights form the foundation 
+                    of Indian democracy.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">📜</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Fundamental Rights</h2>
+            <p class="section-intro">
+                Fundamental Rights are the basic human rights enshrined in the Constitution of India that are 
+                guaranteed to all citizens. They are essential for the overall development of individuals and democracy.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        The Constitution of India guarantees six fundamental rights to all its citizens through 
+                        Articles 12 to 35 in Part III. These rights are justiciable, meaning they can be enforced 
+                        by the courts, and any law that violates these rights can be declared unconstitutional.
+                    </p>
+
+                    <h3>Why Fundamental Rights Matter</h3>
+                    <p>
+                        Fundamental Rights protect citizens from arbitrary state action and ensure the dignity 
+                        and freedom of individuals. They establish the framework for a democratic society where 
+                        every citizen can live with equality, liberty, and justice. These rights act as a check 
+                        on the power of the government and protect minority interests.
+                    </p>
+
+                    <h3>Constitutional Protection</h3>
+                    <p>
+                        The Supreme Court and High Courts have the power to issue writs for the enforcement of 
+                        fundamental rights. Dr. B.R. Ambedkar called Article 32 (Right to Constitutional Remedies) 
+                        the "heart and soul" of the Constitution, as it enables citizens to approach the Supreme 
+                        Court directly for enforcement of their fundamental rights.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖</div>
+                        <div class="highlight-text">
+                            <h4>Justiciable Rights</h4>
+                            <p>Can be enforced through courts if violated by state or individuals</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡</div>
+                        <div class="highlight-text">
+                            <h4>Constitutional Safeguards</h4>
+                            <p>Protected by Constitution and cannot be easily amended</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">👥</div>
+                        <div class="highlight-text">
+                            <h4>Universal Application</h4>
+                            <p>Apply to all citizens regardless of background or status</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">📋</div>
+                        <div class="highlight-text">
+                            <h4>Writ Jurisdiction</h4>
+                            <p>Courts can issue writs to enforce fundamental rights</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Six Fundamental Rights</h2>
+            <p class="section-intro">
+                The Constitution guarantees these essential rights to ensure dignity, freedom, and equality for all citizens
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Right to Equality (Articles 14-18)</h3>
+                    <p>
+                        Guarantees equality before law and equal protection of laws. Prohibits discrimination 
+                        on grounds of religion, race, caste, sex, or place of birth. Ensures equality of 
+                        opportunity in public employment and abolishes untouchability and titles.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Right to Freedom (Articles 19-22)</h3>
+                    <p>
+                        Includes freedom of speech and expression, assembly, association, movement, residence, 
+                        and profession. Also provides protection against arrest and detention in certain cases, 
+                        ensuring personal liberty and due process of law.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Right Against Exploitation (Articles 23-24)</h3>
+                    <p>
+                        Prohibits human trafficking, forced labor, and employment of children in factories 
+                        and hazardous jobs. Ensures protection from all forms of exploitation and provides 
+                        for the abolition of bonded labor.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Right to Freedom of Religion (Articles 25-28)</h3>
+                    <p>
+                        Guarantees freedom of conscience and free profession, practice, and propagation of 
+                        religion. Protects religious denominations and their rights, while maintaining the 
+                        secular character of the state.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Cultural and Educational Rights (Articles 29-30)</h3>
+                    <p>
+                        Protects the interests of minorities by giving them right to conserve their language, 
+                        script, and culture. Allows minorities to establish and administer educational 
+                        institutions of their choice.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Right to Constitutional Remedies (Article 32)</h3>
+                    <p>
+                        Provides the right to move to Supreme Court for enforcement of fundamental rights. 
+                        This is called the "heart and soul" of the Constitution, enabling citizens to seek 
+                        judicial intervention when their rights are violated.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Fundamental Rights Cases</h2>
+            <p class="section-intro">
+                Historic judgments that shaped the interpretation and protection of fundamental rights in India
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Kesavananda Bharati v. State of Kerala (1973)</h3>
+                <p class="case-content">
+                    This landmark case established the "Basic Structure Doctrine," which holds that Parliament 
+                    cannot amend the Constitution in a way that alters its basic structure. The Supreme Court 
+                    ruled that fundamental rights form part of the basic structure and cannot be completely 
+                    taken away through constitutional amendments.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Fundamental rights were given constitutional primacy and protection 
+                    against arbitrary amendments, ensuring their permanence in Indian democracy.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Maneka Gandhi v. Union of India (1978)</h3>
+                <p class="case-content">
+                    The Court expanded the scope of Article 21 (Right to Life and Personal Liberty), ruling 
+                    that the right to life includes the right to live with human dignity and all aspects that 
+                    make life meaningful. This case revolutionized the interpretation of fundamental rights.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Article 21 became the foundation for numerous rights including 
+                    right to education, right to privacy, right to clean environment, and right to food.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Indra Sawhney v. Union of India (1992)</h3>
+                <p class="case-content">
+                    This case dealt with reservations and the right to equality. The Supreme Court upheld 
+                    the Mandal Commission's recommendations for Other Backward Classes (OBC) reservations 
+                    while setting a 50% cap on total reservations and excluding the "creamy layer."
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Balanced the right to equality with affirmative action, 
+                    establishing important principles for reservation policies in India.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about fundamental rights and their enforcement
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can fundamental rights be suspended?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, during a national emergency (Article 352), all fundamental rights except 
+                            Articles 20 and 21 can be suspended. However, the right to life and personal liberty 
+                            (Article 21) and protection against conviction for offences (Article 20) cannot be 
+                            suspended even during emergency. The 44th Amendment Act, 1978 strengthened this 
+                            protection by making these rights non-suspendable.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the difference between fundamental rights and fundamental duties?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Fundamental rights are justiciable (enforceable by courts) and protect citizens 
+                            from state action, while fundamental duties (Article 51A) are non-justiciable moral 
+                            obligations of citizens. Rights can be enforced through courts, but duties cannot be 
+                            legally enforced, though they guide civic behavior. Fundamental duties were added 
+                            by the 42nd Amendment in 1976, while fundamental rights were part of the original 
+                            Constitution.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can a citizen file a case directly in the Supreme Court?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, under Article 32, any citizen can directly approach the Supreme Court for 
+                            enforcement of fundamental rights without going through lower courts. This is called 
+                            the Right to Constitutional Remedies and is itself a fundamental right. The Supreme 
+                            Court can issue various writs like Habeas Corpus, Mandamus, Prohibition, Certiorari, 
+                            and Quo Warranto for enforcement of fundamental rights.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are fundamental rights absolute?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            No, fundamental rights are not absolute. They come with reasonable restrictions in 
+                            the interest of sovereignty, integrity, security of state, public order, morality, 
+                            and decency. The state can impose reasonable restrictions on these rights under 
+                            specific constitutional provisions. For example, freedom of speech (Article 19) 
+                            has eight specific grounds for reasonable restrictions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What types of writs can courts issue for fundamental rights?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Courts can issue five types of writs: Habeas Corpus (for illegal detention), 
+                            Mandamus (to compel public officials to perform their duty), Prohibition (to prevent 
+                            lower courts from exceeding jurisdiction), Certiorari (to quash illegal orders of 
+                            lower courts), and Quo Warranto (to question a person's right to hold public office). 
+                            These writs are powerful tools for enforcing fundamental rights and ensuring justice.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do fundamental rights apply to private entities?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Fundamental rights primarily protect citizens against state action. However, 
+                            Articles 23 (prohibition of trafficking and forced labor) and 24 (prohibition of 
+                            child labor) apply to both state and private entities. Other rights generally apply 
+                            only against the state, though they influence private law through judicial 
+                            interpretation. The Supreme Court has expanded the definition of "state" under 
+                            Article 12 to include various entities performing public functions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions 
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal Services</h4>
+                <div class="footer-links">
+                    <a href="../laws/criminallaw.html">Criminal Law</a>
+                    <a href="../laws/familylaw.html">Family Law</a>
+                    <a href="../laws/corporatelaw.html">Corporate Law</a>
+                    <a href="../laws/civillaw.html">Civil Law</a>
+                    <a href="../laws/juvenilelaw.html">Juvenile Law</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Legal Directory</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>s

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Law - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #dc2626;
+            --page-accent-light: #ef4444;
+            --page-gradient: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(220, 38, 38, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(220, 38, 38, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Criminal Law</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Criminal Law</span><br>
+                    Understanding Justice & Legal Defenses
+                </h1>
+                <p>
+                    Comprehensive guide to criminal law, legal procedures, defense rights, and the justice system. 
+                    Know your rights when facing criminal charges and understand the legal process from arrest to trial.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">⚖️</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Criminal Law</h2>
+            <p class="section-intro">
+                Criminal law defines offenses against the state and establishes procedures for prosecution, 
+                punishment, and protection of defendants' rights throughout the legal process.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        Criminal law encompasses the body of laws that define criminal offenses, regulate the 
+                        apprehension, charging, and trial of suspected persons, and fix penalties for convicted 
+                        offenders. It balances society's need for safety with individual rights and liberties.
+                    </p>
+
+                    <h3>The Purpose of Criminal Law</h3>
+                    <p>
+                        Criminal law serves multiple purposes: deterring criminal behavior, punishing wrongdoers, 
+                        protecting society from dangerous individuals, rehabilitating offenders, and maintaining 
+                        social order. The system operates on the principle that punishment should be proportional 
+                        to the offense and that all defendants are presumed innocent until proven guilty.
+                    </p>
+
+                    <h3>Classification of Crimes</h3>
+                    <p>
+                        Crimes are typically classified into felonies (serious offenses punishable by imprisonment 
+                        for more than one year), misdemeanors (less serious offenses with shorter sentences), and 
+                        infractions (minor violations usually punished by fines). The classification affects the 
+                        severity of punishment and the legal procedures that apply to the case.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖</div>
+                        <div class="highlight-text">
+                            <h4>Presumption of Innocence</h4>
+                            <p>Defendants are innocent until proven guilty beyond reasonable doubt</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡</div>
+                        <div class="highlight-text">
+                            <h4>Right to Defense</h4>
+                            <p>Constitutional right to legal representation and fair trial</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚡</div>
+                        <div class="highlight-text">
+                            <h4>Due Process</h4>
+                            <p>Strict procedural safeguards throughout criminal proceedings</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🔒</div>
+                        <div class="highlight-text">
+                            <h4>Protection Against Abuse</h4>
+                            <p>Safeguards against unlawful searches, coerced confessions, and double jeopardy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Essential Criminal Law Principles</h2>
+            <p class="section-intro">
+                Fundamental legal principles and rights that protect individuals in the criminal justice system
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Right to Remain Silent</h3>
+                    <p>
+                        The Fifth Amendment protection against self-incrimination allows suspects to remain silent 
+                        during police questioning. Anything said to law enforcement can be used as evidence, and 
+                        suspects have the right to have an attorney present during interrogation to protect this right.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Right to Legal Counsel</h3>
+                    <p>
+                        The Sixth Amendment guarantees the right to legal representation in criminal proceedings. 
+                        If unable to afford an attorney, the court must appoint a public defender. This right applies 
+                        from the moment of arrest through all stages of the criminal process, including appeals.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Protection Against Unreasonable Search</h3>
+                    <p>
+                        The Fourth Amendment protects against unreasonable searches and seizures. Law enforcement 
+                        generally needs a warrant based on probable cause to search persons or property, with specific 
+                        exceptions for exigent circumstances, consent searches, and plain view doctrine.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Right to Speedy Trial</h3>
+                    <p>
+                        Defendants have the constitutional right to a speedy and public trial. This prevents extended 
+                        pre-trial detention and ensures that evidence remains fresh and witnesses are available. 
+                        Time limits vary by jurisdiction and offense severity.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Protection Against Double Jeopardy</h3>
+                    <p>
+                        The Fifth Amendment prohibits trying a person twice for the same offense after acquittal 
+                        or conviction. This fundamental protection prevents government harassment through repeated 
+                        prosecutions and ensures finality in criminal proceedings.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Right to Confront Witnesses</h3>
+                    <p>
+                        The Sixth Amendment guarantees the right to confront and cross-examine witnesses testifying 
+                        against the defendant. This ensures the reliability of evidence by testing witness credibility 
+                        and allows the defense to challenge prosecution evidence directly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Criminal Law Cases</h2>
+            <p class="section-intro">
+                Historic judgments that established fundamental rights and procedures in criminal justice
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Miranda v. Arizona (1966)</h3>
+                <p class="case-content">
+                    This landmark U.S. Supreme Court case established that criminal suspects must be informed of their 
+                    rights to an attorney and against self-incrimination before police questioning. Ernesto Miranda was 
+                    arrested and confessed without being informed of these fundamental rights, leading to his conviction.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established the "Miranda Rights" requirement that police must inform 
+                    suspects of their constitutional rights before custodial interrogation, creating crucial protection 
+                    against self-incrimination and coerced confessions.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Gideon v. Wainwright (1963)</h3>
+                <p class="case-content">
+                    Clarence Earl Gideon was charged with felony breaking and entering in Florida. Unable to afford 
+                    an attorney, he requested the court appoint one for him but was denied. Gideon represented himself 
+                    at trial and was convicted, then appealed arguing his Sixth Amendment right to counsel was violated.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established that state courts are required under the Sixth Amendment 
+                    to provide counsel in criminal cases for defendants unable to afford their own attorneys, 
+                    fundamentally transforming criminal defense for indigent defendants.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Mapp v. Ohio (1961)</h3>
+                <p class="case-content">
+                    Dollree Mapp was convicted of possessing obscene materials after police conducted a warrantless 
+                    search of her home. The evidence was obtained illegally, but Ohio courts admitted it anyway. 
+                    Mapp appealed, arguing the evidence should have been excluded under the Fourth Amendment.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Applied the exclusionary rule to state courts, prohibiting the use of 
+                    evidence obtained through unconstitutional searches and seizures. This created a powerful 
+                    deterrent against police misconduct and strengthened Fourth Amendment protections nationwide.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about criminal law procedures and defendant rights
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I do if I'm arrested?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            If you're arrested, remain calm and remember your rights: You have the right to remain 
+                            silent - use it. Clearly state that you wish to remain silent and want an attorney. 
+                            Do not resist arrest physically. Do not discuss your case with anyone except your attorney. 
+                            Remember details about the arrest, including officers' names and badge numbers. Do not 
+                            consent to any searches without a warrant. Contact an attorney as soon as possible and 
+                            do not make any decisions or statements without legal advice.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's the difference between a felony and a misdemeanor?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            The main difference between felonies and misdemeanors is the severity of punishment. 
+                            Felonies are serious crimes punishable by more than one year in prison, including 
+                            murder, rape, robbery, and serious drug offenses. Misdemeanors are less serious offenses 
+                            with maximum sentences of up to one year in jail, such as petty theft, simple assault, 
+                            or minor drug possession. Felonies typically involve more complex legal procedures, 
+                            greater constitutional protections, and more severe long-term consequences including 
+                            loss of voting rights, professional licenses, and firearm ownership rights.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I represent myself in a criminal case?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            While you have the constitutional right to represent yourself (pro se representation), 
+                            it is strongly discouraged in criminal cases. The legal system is complex, and prosecutors 
+                            are trained professionals. Without legal training, you may miss important defenses, 
+                            procedural opportunities, or make tactical errors that could severely impact your case. 
+                            The court must ensure your decision to represent yourself is knowing, intelligent, and 
+                            voluntary (Faretta warning). Even if you choose self-representation, consulting with an 
+                            attorney for guidance is highly recommended.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is plea bargaining and how does it work?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Plea bargaining is a negotiation between the defense and prosecution where the defendant 
+                            agrees to plead guilty in exchange for concessions, such as reduced charges, lighter 
+                            sentencing recommendations, or dismissal of some charges. Most criminal cases are 
+                            resolved through plea bargains rather than trial. Types include charge bargaining 
+                            (reducing severity of charges), sentence bargaining (agreeing on specific sentence), 
+                            and count bargaining (reducing number of charges). The judge must approve any plea 
+                            agreement. While plea bargains can provide certainty and potentially lighter punishment, 
+                            defendants give up their right to trial and the possibility of acquittal.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are my rights during police questioning?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            During police questioning, you have several important rights: The right to remain silent 
+                            - you cannot be punished for refusing to answer questions. The right to an attorney - 
+                            if you request one, questioning must stop until your attorney is present. The right to 
+                            know you're being recorded in many jurisdictions. The right to have an attorney appointed 
+                            if you cannot afford one. Importantly, you must clearly invoke these rights - saying 
+                            "I want to remain silent" and "I want a lawyer." Simply remaining silent may not be enough 
+                            to protect your rights in some jurisdictions. Never lie to police, as this can create 
+                            additional charges.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if evidence was obtained illegally?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            If evidence was obtained in violation of your constitutional rights (such as through 
+                            an illegal search or coerced confession), your attorney can file a motion to suppress 
+                            that evidence. If the motion is granted, the prosecution cannot use that evidence at trial. 
+                            This is known as the "exclusionary rule." However, there are exceptions, including: 
+                            evidence that would have been inevitably discovered through legal means, evidence obtained 
+                            in good faith reliance on a defective warrant, and evidence used only for impeachment 
+                            purposes. The strength of the suppression motion depends on the specific constitutional 
+                            violation and jurisdiction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html#home">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Know Your Rights</h4>
+                <div class="footer-links">
+                    <a href="../rights/fundamentalrights.html">Fundamental Rights</a>
+                    <a href="../rights/legalprotections.html">Legal Protections</a>
+                    <a href="../laws/familylaw.html">Family Law</a>
+                    <a href="../rights/propertyhousing.html">Property & Housing</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

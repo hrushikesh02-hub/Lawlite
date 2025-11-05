@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robbery & Theft Law - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #9333ea;
+            --page-accent-light: #a855f7;
+            --page-gradient: linear-gradient(135deg, #9333ea 0%, #a855f7 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(168, 85, 247, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(147, 51, 234, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(147, 51, 234, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(147, 51, 234, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(147, 51, 234, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(168, 85, 247, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Robbery & Theft</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Robbery & Theft Law</span><br>
+                    Understanding Property Crimes & Defenses
+                </h1>
+                <p>
+                    Comprehensive guide to robbery, theft, burglary, and related property crimes. Learn about 
+                    legal definitions, penalties, defenses, and your rights when facing property crime charges.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">💰</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Robbery & Theft Laws</h2>
+            <p class="section-intro">
+                Property crimes encompass various offenses involving unlawful taking or control of another person's 
+                property, with significant differences in elements, intent requirements, and potential penalties.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        Robbery and theft laws protect individuals' property rights and create legal consequences 
+                        for unlawful taking or control of others' possessions. These crimes range from minor thefts 
+                        to serious armed robberies, with penalties varying from fines to lengthy prison sentences 
+                        depending on the circumstances and value of property involved.
+                    </p>
+
+                    <h3>Key Legal Distinctions</h3>
+                    <p>
+                        The fundamental distinction between theft and robbery lies in the use or threat of force. 
+                        Theft involves taking property without permission, while robbery requires theft plus force 
+                        or intimidation. Burglary, often confused with robbery, involves unlawful entry into a 
+                        structure with intent to commit a crime inside, regardless of whether theft actually occurs.
+                    </p>
+
+                    <h3>Grading of Offenses</h3>
+                    <p>
+                        Property crimes are typically graded based on factors like the value of stolen property, 
+                        use of weapons, presence of victims, and the defendant's criminal history. Most jurisdictions 
+                        classify these offenses as misdemeanors or felonies, with felony theft thresholds varying 
+                        significantly by state - from a few hundred dollars to over a thousand dollars.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖</div>
+                        <div class="highlight-text">
+                            <h4>Intent Requirement</h4>
+                            <p>Most theft crimes require specific intent to permanently deprive owner of property</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🔒</div>
+                        <div class="highlight-text">
+                            <h4>Force Element</h4>
+                            <p>Robbery requires force or threat of force during theft; distinguishes from simple theft</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💰</div>
+                        <div class="highlight-text">
+                            <h4>Value Matters</h4>
+                            <p>Penalties often depend on property value and circumstances of theft</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡</div>
+                        <div class="highlight-text">
+                            <h4>Defenses Available</h4>
+                            <p>Various legal defenses including claim of right, mistake, and lack of intent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Types of Property Crimes</h2>
+            <p class="section-intro">
+                Different categories of robbery, theft, and related offenses with distinct legal elements and penalties
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Petty Theft</h3>
+                    <p>
+                        The theft of property below a specific value threshold (varies by state, typically $500-$1,000). 
+                        Usually charged as a misdemeanor with penalties including fines, probation, community service, 
+                        and up to one year in jail. Often eligible for diversion programs for first-time offenders.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Grand Theft</h3>
+                    <p>
+                        The theft of property exceeding the statutory value threshold or involving specific types 
+                        of property like firearms, vehicles, or livestock. Charged as a felony with potential prison 
+                        sentences, substantial fines, and permanent criminal record. Penalties increase with value.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Robbery</h3>
+                    <p>
+                        The taking of property from a person's immediate possession through force or threat of force. 
+                        Always a felony with severe penalties. Enhanced penalties for armed robbery, robbery causing 
+                        injury, or robbery of vulnerable victims. Sentences range from several years to life imprisonment.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Burglary</h3>
+                    <p>
+                        Unlawful entry into any structure with intent to commit a crime inside, usually theft. 
+                        Doesn't require actual theft - intent alone suffices. Degrees vary based on location 
+                        (home vs. business), time (night vs. day), and weapons involved. Often carries mandatory minimum sentences.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Shoplifting</h3>
+                    <p>
+                        A specific form of theft involving concealment of merchandise in retail establishments 
+                        with intent to deprive the merchant without payment. Can range from infraction to felony 
+                        based on value. Many states have civil demand laws allowing stores to seek damages beyond criminal penalties.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Receiving Stolen Property</h3>
+                    <p>
+                        Knowingly receiving, buying, or possessing stolen property with intent to permanently 
+                        deprive the owner. Requires knowledge that property was stolen. Penalties similar to 
+                        theft of equivalent value. Often charged when direct theft evidence is insufficient.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Robbery & Theft Cases</h2>
+            <p class="section-intro">
+                Important court decisions that shaped the interpretation and application of robbery and theft laws
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">People v. Williams (California Supreme Court)</h3>
+                <p class="case-content">
+                    This case established important precedents regarding the "taking" element in robbery cases. 
+                    The court examined whether momentary possession constitutes sufficient "taking" for robbery 
+                    and clarified the distinction between robbery and theft based on the duration and nature of 
+                    property control during criminal acts.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Clarified that robbery requires carrying away property sufficient 
+                    to show assumption of control, not just momentary touching. Established that the degree of 
+                    movement required for "asportation" depends on the nature of the property and circumstances.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">State v. Smith (Force Requirement)</h3>
+                <p class="case-content">
+                    This case addressed the level of force required to elevate theft to robbery. The defendant 
+                    argued that minimal force used during a purse-snatching should not constitute robbery. 
+                    The court examined historical definitions and modern applications of the force element 
+                    in robbery statutes across jurisdictions.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established that any force used to overcome victim resistance, 
+                    however slight, can satisfy the force requirement for robbery. The key distinction is 
+                    force applied against the person rather than just the property being taken.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Federal Sentencing Guidelines Cases</h3>
+                <p class="case-content">
+                    Multiple federal cases have addressed how robbery and theft offenses should be scored under 
+                    sentencing guidelines, particularly regarding loss amount calculations, vulnerable victim 
+                    enhancements, and adjustments for role in organized retail theft operations.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Developed consistent methodologies for calculating loss amounts 
+                    in theft cases, established criteria for vulnerable victim enhancements in robbery cases, 
+                    and created frameworks for sentencing organized retail theft operations as pattern criminal conduct.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about robbery, theft charges, and legal defenses
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's the difference between robbery and burglary?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Robbery and burglary are distinct crimes with different elements: Robbery involves 
+                            taking property directly from a person through force or threat of force. It requires 
+                            a victim present during the crime. Burglary involves unlawful entry into a structure 
+                            with intent to commit a crime inside (usually theft). No victim needs to be present, 
+                            and no actual theft needs to occur - the intent alone is sufficient. Robbery is generally 
+                            considered more serious due to the potential for violence against persons, while burglary 
+                            focuses on unlawful entry. However, many burglaries become robberies if occupants are 
+                            present and force is used. Penalties for both can be severe, but robbery typically carries 
+                            longer potential sentences.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I be charged with theft if I intended to return the property?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            In most jurisdictions, yes - temporary deprivation can still constitute theft. The key 
+                            legal question is whether you intended to permanently deprive the owner of the property 
+                            or of a major portion of its value or usefulness. However, some states recognize a 
+                            "claim of right" defense if you genuinely believed you had a right to the property. 
+                            Borrowing without permission might be charged as "unauthorized use of a vehicle" or 
+                            similar offenses rather than theft. The specific circumstances matter greatly: duration 
+                            of deprivation, damage to property, whether you concealed the taking, and your actions 
+                            when confronted. If you genuinely intended to return the property promptly and in the 
+                            same condition, this could be a valid defense, but you'll need strong evidence of your intent.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are common defenses to theft charges?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Common defenses to theft charges include: Lack of intent - you didn't intend to 
+                            permanently deprive the owner. Claim of right - you genuinely believed the property 
+                            was yours or you had permission to take it. Mistake of fact - you reasonably believed 
+                            facts that would make your actions legal. Consent - the owner gave you permission. 
+                            Entrapment - law enforcement induced you to commit a crime you wouldn't have otherwise 
+                            committed. Insufficient evidence - the prosecution cannot prove all elements beyond 
+                            reasonable doubt. Identity defense - you weren't the person who committed the theft. 
+                            Duress - you were forced to commit theft under threat of immediate harm. The effectiveness 
+                            of these defenses depends on the specific facts, evidence, and jurisdiction.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does value affect theft charges?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            The value of stolen property significantly impacts theft charges in several ways: 
+                            It determines whether the offense is petty theft (misdemeanor) or grand theft (felony). 
+                            Most states have specific dollar thresholds (from $200 to $2,500) that separate these 
+                            categories. Higher values typically lead to more severe penalties and longer potential 
+                            sentences. Some jurisdictions have multiple tiers of grand theft based on increasing 
+                            value ranges. Value also affects restitution amounts and may trigger mandatory minimum 
+                            sentences in some states. The prosecution must prove the value, often through receipts, 
+                            expert testimony, or owner statements. In cases involving multiple items stolen in a 
+                            single scheme, the values are usually aggregated. Some states treat theft of certain 
+                            items (firearms, vehicles, drugs) as grand theft regardless of actual value.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I do if I'm accused of theft?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            If you're accused of theft: Remain silent and do not discuss the case with anyone 
+                            except your attorney. Police and store security are not on your side. Contact a 
+                            criminal defense attorney immediately - do not speak to law enforcement without 
+                            legal counsel. Preserve any evidence that might help your case, including receipts, 
+                            witness information, or surveillance footage. Do not return to the location where 
+                            the alleged theft occurred. Do not attempt to explain yourself to store management 
+                            or security - anything you say can be used against you. If arrested, clearly state 
+                            you wish to remain silent and want an attorney. Do not consent to any searches. 
+                            Document everything you remember about the incident while it's fresh in your mind. 
+                            Follow your attorney's advice carefully regarding whether to make statements or 
+                            participate in investigations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can shoplifting charges be expunged?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Expungement possibilities for shoplifting charges depend on several factors: 
+                            Jurisdiction - expungement laws vary significantly by state. Some states allow 
+                            expungement for most first-time misdemeanors, while others have more restrictive rules. 
+                            Case outcome - dismissals and not guilty verdicts are easier to expunge than convictions. 
+                            Completion of diversion programs often results in automatic dismissal and expungement 
+                            eligibility. Criminal history - individuals with multiple offenses may be ineligible. 
+                            Waiting period - most states require a crime-free waiting period (typically 3-5 years) 
+                            before applying. Type of offense - misdemeanor shoplifting is generally easier to 
+                            expunge than felony theft. Many states have recently expanded expungement opportunities 
+                            for non-violent offenses. Consult with a local attorney about specific eligibility 
+                            requirements and procedures in your jurisdiction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html#home">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Know Your Rights</h4>
+                <div class="footer-links">
+                    <a href="../rights/fundamentalrights.html">Fundamental Rights</a>
+                    <a href="../rights/legalprotections.html">Legal Protections</a>
+                    <a href="../laws/familylaw.html">Family Law</a>
+                    <a href="../laws/criminallaw.html">Criminal Law</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawLite - Professional Legal Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <!-- Login link will be hidden when user is logged in -->
+                <li id="loginNavItem"><a href="/Frontend/login/login.html" class="nav-link">Login</a></li>
+            </ul>
+              <div id="google_translate_element" style="float: right; margin: 10px;"></div>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+
+                <!-- Profile Icon (hidden by default) -->
+                <div class="profile-icon-container" id="profileIconContainer" style="display: none;">
+                    <div class="profile-dropdown">
+                        <button class="profile-icon-btn" id="profileIconBtn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-menu" id="profileDropdown">
+                            <a href="/Frontend/home/profilepage.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                            <a href="#" class="dropdown-item" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="cta-button"
+                    onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });">
+                    Ask Legal Help
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">⚖️ Your Trusted Legal Partner</div>
+                <h1 class="hero-title">
+                    "Empowering justice through
+                    <span class="gradient-text" id="typewriter"></span><span class="cursor">|</span>"
+                </h1>
+                <p class="hero-description">
+                    Dedicated to guiding individuals toward fair, transparent, and reliable legal solutions.
+                    We believe in spreading legal awareness and making justice approachable for everyone.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Explore More</button>
+                    <button class="btn-secondary">Know Your Rights</button>
+                </div>
+            </div>
+
+            <div class="vision-card">
+                <div class="vision-icon">⚖️</div>
+                <h3 class="vision-title">OUR VISION</h3>
+                <p class="vision-description">
+                    To create a legally aware society where every individual understands their rights,
+                    duties, and the power of law. Our aim is to simplify legal concepts and make
+                    knowledge of justice accessible to all.
+                </p>
+                <div class="vision-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Clear Legal Information</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Public Awareness</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Empowering Every Citizen</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- News Ticker -->
+    <section class="news-ticker">
+        <div class="ticker-container">
+            <div class="ticker-label">Latest Updates</div>
+            <div class="ticker-content">
+                <div class="ticker-item active">New Digital India Act 2024 introduces comprehensive data protection
+                    measures</div>
+                <div class="ticker-item">Supreme Court ruling on environmental protection strengthens green laws</div>
+                <div class="ticker-item">Legal aid services expanded to rural areas nationwide</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <h2 class="search-title">Search Legal Information</h2>
+            <p class="search-subtitle">Find legal information, precedents, and policies instantly with our advanced
+                AI-powered search</p>
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" placeholder="Enter law, policy, or keyword..." class="search-input"
+                        id="searchInput">
+                    <button type="button" class="search-btn">Search</button>
+                </div>
+                <div class="search-suggestions">
+                    <span class="suggestion-label">Popular searches:</span>
+                    <button class="suggestion-tag">Criminal Law</button>
+                    <button class="suggestion-tag">Family Law</button>
+                    <button class="suggestion-tag">Corporate Law</button>
+                    <button class="suggestion-tag">Civil Rights</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Know Your Rights Section -->
+    <section class="rights-section" id="rights">
+        <div class="rights-container">
+            <div class="section-header">
+                <div class="section-badge">Legal Awareness</div>
+                <h2 class="section-title">Know Your Rights</h2>
+                <p class="section-subtitle">Empowering citizens with essential legal knowledge and fundamental rights
+                </p>
+            </div>
+
+            <div class="rights-grid">
+                <div class="rights-card">
+                    <div class="rights-icon">📜</div>
+                    <h3 class="rights-title">Fundamental Rights</h3>
+                    <p class="rights-description">
+                        Every citizen has constitutional rights including equality, freedom of speech,
+                        right to life and personal liberty, and protection against discrimination.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Right to Equality (Article 14-18)</li>
+                        <li>Right to Freedom (Article 19-22)</li>
+                        <li>Right Against Exploitation (Article 23-24)</li>
+                        <li>Right to Constitutional Remedies (Article 32)</li>
+                    </ul>
+                    <a href="../rights/fundamentalrights.html" class="rights-link">Learn More →</a>
+                </div>
+
+                <div class="rights-card">
+                    <div class="rights-icon">⚖️</div>
+                    <h3 class="rights-title">Legal Protections</h3>
+                    <p class="rights-description">
+                        Understanding your legal protections in various situations including arrest,
+                        workplace disputes, consumer rights, and property matters.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Right to legal representation</li>
+                        <li>Protection against unlawful arrest</li>
+                        <li>Consumer protection rights</li>
+                        <li>Workplace harassment safeguards</li>
+                    </ul>
+                    <a href="../rights/legalprotections.html" class="rights-link">Learn More →</a>
+                </div>
+
+                <div class="rights-card">
+                    <div class="rights-icon">👥</div>
+                    <h3 class="rights-title">Special Groups</h3>
+                    <p class="rights-description">
+                        Enhanced protections for vulnerable groups including women, children,
+                        senior citizens, and persons with disabilities.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Women's rights and protection laws</li>
+                        <li>Child protection and welfare</li>
+                        <li>Senior citizen benefits</li>
+                        <li>Disability rights and accessibility</li>
+                    </ul>
+                    <a href="../rights/specialgroups.html" class="rights-link">Learn More →</a>
+                </div>
+
+                <div class="rights-card">
+                    <div class="rights-icon">🏠</div>
+                    <h3 class="rights-title">Property & Housing</h3>
+                    <p class="rights-description">
+                        Legal rights related to property ownership, tenancy, inheritance,
+                        and protection against illegal eviction or property disputes.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Tenant rights and responsibilities</li>
+                        <li>Property ownership laws</li>
+                        <li>Inheritance and succession</li>
+                        <li>Housing and eviction protection</li>
+                    </ul>
+                    <a href="../rights/propertyhousing.html" class="rights-link">Learn More →</a>
+                </div>
+
+                <div class="rights-card">
+                    <div class="rights-icon">💼</div>
+                    <h3 class="rights-title">Employment Rights</h3>
+                    <p class="rights-description">
+                        Workplace rights including fair wages, safe working conditions,
+                        protection against discrimination, and termination procedures.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Minimum wage and payment rights</li>
+                        <li>Safe workplace conditions</li>
+                        <li>Anti-discrimination protections</li>
+                        <li>Wrongful termination remedies</li>
+                    </ul>
+                    <a href="../rights/employmentrights.html" class="rights-link">Learn More →</a>
+                </div>
+
+                <div class="rights-card">
+                    <div class="rights-icon">🛡️</div>
+                    <h3 class="rights-title">Privacy & Data</h3>
+                    <p class="rights-description">
+                        Digital rights and privacy protections in the modern age including
+                        data protection, online privacy, and cyber security laws.
+                    </p>
+                    <ul class="rights-list">
+                        <li>Personal data protection</li>
+                        <li>Right to privacy</li>
+                        <li>Cyber crime protections</li>
+                        <li>Digital consent and permissions</li>
+                    </ul>
+                    <a href="../rights/privacydata.html" class="rights-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="section-header">
+                <div class="section-badge">Who We Are</div>
+                <h2 class="section-title">About LawLite</h2>
+                <p class="section-subtitle">Dedicated to making justice accessible, affordable, and efficient for
+                    everyone</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-story">
+                    <h3 class="about-heading">Our Story</h3>
+                    <p class="about-text">
+                        Founded with a vision to bridge the gap between legal expertise and common citizens,
+                        LawLite has been at the forefront of democratizing legal services. We believe that
+                        access to quality legal representation should not be a privilege but a fundamental right.
+                    </p>
+
+                </div>
+
+                <div class="about-values">
+                    <h3 class="about-heading">Our Core Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">🎯</div>
+                            <h4>Integrity</h4>
+                            <p>Upholding the highest ethical standards in every case we handle</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🤝</div>
+                            <h4>Accessibility</h4>
+                            <p>Making legal services available to all, breaking economic barriers</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">⚡</div>
+                            <h4>Excellence</h4>
+                            <p>Delivering superior legal solutions with expertise and dedication</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">💙</div>
+                            <h4>Compassion</h4>
+                            <p>Understanding client needs with empathy and human connection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <div class="section-badge">Our Expertise</div>
+                <h2 class="section-title">Professional Legal Services</h2>
+                <p class="section-subtitle">Comprehensive legal solutions tailored to your specific needs with expert
+                    guidance</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="service-icon">⚖</div>
+                        <div class="service-category">Defense</div>
+                    </div>
+                    <h3 class="service-title">Criminal Law</h3>
+                    <p class="service-description">
+                        Expert defense and representation for criminal cases, ensuring your rights are protected
+                        throughout the entire legal process with experienced attorneys.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">24/7 Support</span>
+                        <span class="feature-badge">Expert Team</span>
+                    </div>
+                    <a href="../laws/criminallaw.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="card-header">
+                        <div class="service-icon">👨‍⚖</div>
+                        <div class="service-category">Specialized</div>
+                    </div>
+                    <h3 class="service-title">Juvenile Law</h3>
+                    <p class="service-description">
+                        Specialized legal services for minors, focusing on rehabilitation and protecting
+                        the best interests of young individuals with compassionate approach.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">Confidential</span>
+                        <span class="feature-badge">Specialized</span>
+                    </div>
+                    <a href="../laws/juvenilelaw.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="service-icon">🛡</div>
+                        <div class="service-category">Protection</div>
+                    </div>
+                    <h3 class="service-title">Robbery & Theft</h3>
+                    <p class="service-description">
+                        Comprehensive legal support for theft-related cases, providing strong defense
+                        strategies and expert legal guidance with proven track record.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">Quick Response</span>
+                        <span class="feature-badge">Strong Defense</span>
+                    </div>
+                    <a href="../laws/robbery&theft.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="service-icon">📋</div>
+                        <div class="service-category">General</div>
+                    </div>
+                    <h3 class="service-title">Civil Law</h3>
+                    <p class="service-description">
+                        Resolution of civil disputes, contract issues, and personal matters through
+                        skilled legal representation and professional mediation services.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">Mediation</span>
+                        <span class="feature-badge">Quick Resolution</span>
+                    </div>
+                    <a href="../laws/civillaw.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="service-icon">👨‍👩‍👧‍👦</div>
+                        <div class="service-category">Personal</div>
+                    </div>
+                    <h3 class="service-title">Family Law</h3>
+                    <p class="service-description">
+                        Sensitive handling of family matters including divorce, custody, adoption,
+                        and domestic relations with utmost care, discretion and empathy.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">Confidential</span>
+                        <span class="feature-badge">Compassionate</span>
+                    </div>
+                    <a href="../laws/familylaw.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="service-icon">🏢</div>
+                        <div class="service-category">Business</div>
+                    </div>
+                    <h3 class="service-title">Corporate Law</h3>
+                    <p class="service-description">
+                        Comprehensive business legal solutions including compliance, contracts, mergers,
+                        and corporate governance for enterprises of all sizes and industries.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-badge">Business Focus</span>
+                        <span class="feature-badge">Compliance</span>
+                    </div>
+                    <a href="../laws/corporatelaw.html" class="service-link">
+                        <span>Learn More</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDG Section -->
+    <section class="sdg-section">
+        <div class="sdg-container">
+            <div class="section-header">
+                <div class="section-badge">Our Mission</div>
+                <h2 class="section-title">Supporting SDG 16: Peace, Justice & Strong Institutions</h2>
+                <p class="section-subtitle">Contributing to global sustainable development through accessible legal
+                    services</p>
+            </div>
+
+            <div class="sdg-grid">
+                <div class="sdg-card">
+                    <div class="sdg-icon">⚖</div>
+                    <h3 class="sdg-title">Access To Justice</h3>
+                    <p class="sdg-description">
+                        Ensuring equal access to justice for all individuals, regardless of social or economic
+                        background,
+                        and empowering communities with comprehensive legal awareness and support systems.
+                    </p>
+                </div>
+
+                <div class="sdg-card">
+                    <div class="sdg-icon">🏛</div>
+                    <h3 class="sdg-title">Strong Institutions</h3>
+                    <p class="sdg-description">
+                        Promoting transparent, accountable, and inclusive institutions that uphold the rule of law
+                        and protect human rights for everyone in our diverse society.
+                    </p>
+                </div>
+
+                <div class="sdg-card">
+                    <div class="sdg-icon">🕊</div>
+                    <h3 class="sdg-title">Peace & Security</h3>
+                    <p class="sdg-description">
+                        Building peaceful societies by reducing violence, strengthening public trust,
+                        and ensuring fairness in governance and justice systems across all community levels.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <div class="section-badge">Get Help Now</div>
+                <h2 class="section-title">Emergency Contact & Support</h2>
+                <p class="section-subtitle">Immediate legal assistance and emergency helplines available 24/7</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card emergency">
+                    <div class="contact-header-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>Emergency Helplines</h3>
+                    </div>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <span class="contact-label">National Legal Services</span>
+                            <a href="tel:1800-425-0118" class="contact-number">1800-425-0118</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Women Helpline</span>
+                            <a href="tel:1091" class="contact-number">1091</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Child Helpline</span>
+                            <a href="tel:1098" class="contact-number">1098</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Police Emergency</span>
+                            <a href="tel:100" class="contact-number">100</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card resources">
+                    <div class="contact-header-card">
+                        <div class="contact-icon">🔗</div>
+                        <h3>Legal Resources</h3>
+                    </div>
+                    <div class="resource-list">
+                        <a href="https://nalsa.gov.in/" target="_blank" class="resource-link">
+                            <span>National Legal Services Authority</span>
+                            <span class="resource-arrow">→</span>
+                        </a>
+                        <a href="https://indiacode.nic.in/" target="_blank" class="resource-link">
+                            <span>India Code - Acts & Legislation</span>
+                            <span class="resource-arrow">→</span>
+                        </a>
+                        <a href="https://www.indiacourts.nic.in/" target="_blank" class="resource-link">
+                            <span>Indian Courts Portal</span>
+                            <span class="resource-arrow">→</span>
+                        </a>
+                        <a href="https://legislative.gov.in/" target="_blank" class="resource-link">
+                            <span>Legislative Department, GoI</span>
+                            <span class="resource-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="form-section" id="form-section">
+        <div class="contact-form-wrapper">
+            <form class="form" id="contactForm">
+                <div id="formMessage" class="form-message"></div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="form-error">Please enter your name</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="form-error">Please enter a valid email</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we help you with legal information?"
+                        required></textarea>
+                    <span class="form-error">Please enter your message</span>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <div class="justice-illustration">⚖</div>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal Services</h4>
+                <div class="footer-links">
+                    <a href="#">Criminal Law</a>
+                    <a href="#">Family Law</a>
+                    <a href="#">Corporate Law</a>
+                    <a href="#">Civil Law</a>
+                    <a href="#">Juvenile Law</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Legal Directory</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+    <script src="../session.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Update navigation based on login status
+        function updateNavigation() {
+            const sessionManager = new SessionManager();
+            const navLinks = document.querySelector('.nav-links');
+
+            if (sessionManager.isLoggedIn() && navLinks) {
+                const user = sessionManager.getCurrentUser();
+                const loginLink = navLinks.querySelector('a[href*="login.html"]');
+
+                if (loginLink) {
+                    loginLink.innerHTML = `👤 ${user.firstName}`;
+                    loginLink.href = '../home/profilepage.html';
+                }
+
+                // Add logout button to nav-actions
+                const navActions = document.querySelector('.nav-actions');
+                if (navActions && !navActions.querySelector('.logout-btn')) {
+                    const logoutBtn = document.createElement('button');
+                    logoutBtn.textContent = 'Logout';
+                    logoutBtn.className = 'logout-btn';
+                    logoutBtn.style.marginLeft = '1rem';
+                    logoutBtn.style.padding = '0.5rem 1rem';
+                    logoutBtn.style.background = '#ef4444';
+                    logoutBtn.style.color = 'white';
+                    logoutBtn.style.border = 'none';
+                    logoutBtn.style.borderRadius = '5px';
+                    logoutBtn.style.cursor = 'pointer';
+                    logoutBtn.style.fontSize = '0.9rem';
+
+                    logoutBtn.addEventListener('click', () => {
+                        sessionManager.logout();
+                    });
+
+                    navActions.appendChild(logoutBtn);
+                }
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            updateNavigation();
+
+            // Update any user-specific content
+            const sessionManager = new SessionManager();
+            if (sessionManager.isLoggedIn()) {
+                const user = sessionManager.getCurrentUser();
+                console.log('User logged in:', user.firstName);
+                // You can update other user-specific content here
+            }
+        });
+    </script>
+    <script>
+        // Debug and initialize navbar
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM loaded - checking session manager');
+
+            if (typeof sessionManager !== 'undefined') {
+                console.log('Session manager found, updating navbar...');
+                sessionManager.updateNavbar();
+
+                // Setup logout functionality
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        console.log('Logout clicked');
+                        sessionManager.logout();
+                    });
+                }
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (e) {
+                    const dropdown = document.getElementById('profileDropdown');
+                    const profileBtn = document.getElementById('profileIconBtn');
+
+                    if (dropdown && profileBtn && !profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+
+                // Toggle dropdown on button click
+                const profileBtn = document.getElementById('profileIconBtn');
+                if (profileBtn) {
+                    profileBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const dropdown = document.getElementById('profileDropdown');
+                        if (dropdown) {
+                            const isVisible = dropdown.style.display === 'block';
+                            dropdown.style.display = isVisible ? 'none' : 'block';
+                            console.log('Dropdown toggled:', !isVisible);
+                        }
+                    });
+                }
+            } else {
+                console.error('Session manager not found!');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Law - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #7c3aed;
+            --page-accent-light: #8b5cf6;
+            --page-gradient: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(139, 92, 246, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(124, 58, 237, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(124, 58, 237, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(139, 92, 246, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Family Law</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Family Law</span><br>
+                    Protecting Relationships & Family Rights
+                </h1>
+                <p>
+                    Comprehensive guide to family law, marriage, divorce, child custody, and domestic matters. 
+                    Understand your rights in family relationships and learn about legal procedures for marriage, 
+                    divorce, adoption, and child support.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">👨‍👩‍👧‍👦</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Family Law</h2>
+            <p class="section-intro">
+                Family law governs legal relationships between family members, covering marriage, divorce, 
+                child custody, adoption, and domestic partnerships with emphasis on protecting vulnerable family members.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        Family law encompasses the legal rules and procedures that govern family relationships, 
+                        including marriage, civil unions, domestic partnerships, divorce, annulment, child custody, 
+                        child support, adoption, paternity, and domestic violence. It balances individual rights 
+                        with family welfare and the best interests of children.
+                    </p>
+
+                    <h3>The Purpose of Family Law</h3>
+                    <p>
+                        Family law serves to protect family members' rights, ensure children's welfare, 
+                        provide legal frameworks for family formation and dissolution, and establish 
+                        procedures for resolving family disputes. The system prioritizes the best interests 
+                        of children in custody and support matters while ensuring fair treatment of all 
+                        parties in marital dissolution.
+                    </p>
+
+                    <h3>Classification of Family Matters</h3>
+                    <p>
+                        Family law matters are typically categorized into matrimonial (marriage, divorce, 
+                        separation), parental (custody, support, paternity), property (division of assets, 
+                        maintenance), and protective (domestic violence, child protection). Different 
+                        personal laws may apply based on religion, alongside secular family legislation.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">❤️</div>
+                        <div class="highlight-text">
+                            <h4>Best Interests of Child</h4>
+                            <p>Courts prioritize children's welfare in all custody and support decisions</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🤝</div>
+                        <div class="highlight-text">
+                            <h4>Fair Division</h4>
+                            <p>Equitable distribution of marital property and assets upon divorce</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡️</div>
+                        <div class="highlight-text">
+                            <h4>Protection Orders</h4>
+                            <p>Legal safeguards against domestic violence and abuse</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖️</div>
+                        <div class="highlight-text">
+                            <h4>Alternative Resolution</h4>
+                            <p>Mediation and collaborative approaches encouraged for family disputes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Essential Family Law Principles</h2>
+            <p class="section-intro">
+                Fundamental legal principles and rights that protect individuals and families in domestic relationships
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Right to Marital Choice</h3>
+                    <p>
+                        Individuals have the right to choose their marriage partner freely, without coercion 
+                        or undue influence. Laws protect against forced marriages and establish minimum age 
+                        requirements. Consent must be freely given by both parties for a marriage to be valid.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Right to Divorce</h3>
+                    <p>
+                        Married individuals have the right to seek divorce under specified legal grounds, 
+                        including cruelty, adultery, desertion, and irretrievable breakdown of marriage. 
+                        Procedures exist for both contested and mutual consent divorce, with provisions for 
+                        fair settlement of marital issues.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Child Custody Rights</h3>
+                    <p>
+                        Both parents generally have equal rights to custody of their children, with decisions 
+                        based on the child's best interests. Courts consider factors like parental capability, 
+                        child's preference, stability, and emotional bonds when determining custody arrangements.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Right to Maintenance</h3>
+                    <p>
+                        Spouses have the right to seek financial support during and after marriage dissolution. 
+                        Courts consider factors like duration of marriage, standard of living, earning capacity, 
+                        and needs of dependent children when determining appropriate maintenance amounts.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Protection from Domestic Violence</h3>
+                    <p>
+                        Family members have the right to live free from domestic violence, abuse, and harassment. 
+                        Legal protections include protection orders, residence orders, and monetary relief. 
+                        Emergency protection is available to ensure immediate safety from domestic abuse.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Right to Inheritance</h3>
+                    <p>
+                        Family members have inheritance rights to property upon a relative's death. Laws 
+                        establish shares for spouses, children, and other dependents, with provisions to 
+                        prevent disinheritance of vulnerable family members and ensure fair distribution.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Family Law Cases</h2>
+            <p class="section-intro">
+                Historic judgments that established fundamental rights and principles in family law
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Shayara Bano v. Union of India (2017)</h3>
+                <p class="case-content">
+                    This landmark case challenged the practice of instant triple talaq (talaq-e-biddat) 
+                    among Muslims in India. The petitioner argued that the practice violated Muslim women's 
+                    fundamental rights to equality and dignity under the Constitution.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The Supreme Court declared the practice of instant triple talaq 
+                    unconstitutional, establishing that personal laws must conform to fundamental rights and 
+                    providing crucial protection for Muslim women's rights in marriage dissolution.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Vishaka v. State of Rajasthan (1997)</h3>
+                <p class="case-content">
+                    This case addressed sexual harassment of women at the workplace when no specific law 
+                    existed. The petition was filed after the gang rape of a social worker, seeking enforcement 
+                    of fundamental rights for working women through judicial intervention.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The Supreme Court laid down comprehensive guidelines to protect 
+                    women from sexual harassment at workplace, establishing the employer's responsibility 
+                    and creating the foundation for subsequent sexual harassment legislation.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Githa Hariharan v. Reserve Bank of India (1999)</h3>
+                <p class="case-content">
+                    This case challenged the interpretation of the Hindu Minority and Guardianship Act, 1956, 
+                    which gave preference to the father over the mother as a natural guardian of a Hindu minor. 
+                    The petitioner argued this violated constitutional guarantees of gender equality.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> The Supreme Court held that the mother can act as a natural 
+                    guardian of the minor during the lifetime of the father, establishing gender equality 
+                    in guardianship rights and interpreting the law in a constitutionally valid manner.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about family law, marriage, divorce, child custody, and domestic matters
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the grounds for divorce in India?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Grounds for divorce vary by personal laws but generally include: Adultery (voluntary 
+                            sexual intercourse with someone other than spouse), Cruelty (physical or mental 
+                            treatment that causes danger to life, limb, or health), Desertion (abandonment 
+                            for at least two years), Conversion to another religion, Mental disorder or 
+                            unsound mind making normal married life impossible, Venereal disease in a communicable 
+                            form, Presumption of death (not heard of as alive for seven years), and Mutual 
+                            consent (irretrievable breakdown of marriage). Special laws like the Special Marriage 
+                            Act and different personal laws (Hindu, Muslim, Christian, Parsi) have specific provisions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How is child custody determined in divorce cases?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Indian courts determine child custody based on the "welfare of the child" principle, 
+                            which is the paramount consideration. Factors include: The child's age, health, 
+                            and emotional needs, Each parent's ability to provide stable environment, The child's 
+                            preference (if old enough to form an intelligent preference), Parent's moral fitness 
+                            and lifestyle, Sibling relationships and continuity of education, Financial stability 
+                            of each parent, Any history of abuse or neglect, and The child's adjustment to home, 
+                            school, and community. Courts generally prefer keeping siblings together and maintaining 
+                            the status quo of the child's living situation when possible. Joint custody arrangements 
+                            are increasingly favored to maintain meaningful relationships with both parents.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the difference between legal and physical custody?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Legal custody refers to the right and responsibility to make important decisions 
+                            about the child's upbringing, including education, healthcare, religious upbringing, 
+                            and overall welfare. Physical custody refers to where the child lives and which 
+                            parent provides daily care. These can be arranged as: Sole custody (one parent has 
+                            both legal and physical custody), Joint legal custody (both parents share decision-making 
+                            authority), Joint physical custody (child spends substantial time with both parents), 
+                            or Split custody (siblings are divided between parents, which is generally discouraged). 
+                            Indian courts increasingly favor arrangements that maintain meaningful relationships 
+                            with both parents while ensuring stability for the child.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How is maintenance/alimony calculated?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Maintenance (alimony) calculations consider multiple factors: The income and 
+                            property of both spouses, The spouse's earning capacity and employment prospects, 
+                            The standard of living during marriage, The duration of marriage, The age and 
+                            physical/mental health of both spouses, The spouse's contributions as homemaker, 
+                            The needs of dependent children, and Any sacrifices made for the marriage (such as 
+                            career interruptions). Maintenance can be temporary (pendente lite during proceedings) 
+                            or permanent (after divorce). The goal is to ensure the dependent spouse can maintain 
+                            a standard of living reasonably comparable to that enjoyed during marriage, without 
+                            creating lifelong dependency. Courts may modify maintenance orders if circumstances 
+                            change significantly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What legal protections are available against domestic violence?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            The Protection of Women from Domestic Violence Act, 2005 provides comprehensive 
+                            protections: Protection Orders (prohibiting the respondent from committing acts 
+                            of domestic violence), Residence Orders (securing the victim's right to reside 
+                            in the shared household), Monetary Relief (compensation for expenses and losses 
+                            incurred due to domestic violence), Custody Orders (temporary custody of children), 
+                            and Compensation Orders (damages for mental torture and injuries). These remedies 
+                            are available to women in domestic relationships, which includes relationships 
+                            through marriage, blood relations, or adoption, as well as relationships in the 
+                            nature of marriage. Emergency protection is available within 24 hours of application. 
+                            The law covers physical, sexual, verbal, emotional, and economic abuse.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the legal requirements for a valid marriage in India?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Legal requirements for a valid marriage vary by personal laws but generally include: 
+                            Neither party has a spouse living at the time of marriage, Both parties are capable 
+                            of giving valid consent, The male has completed 21 years and the female 18 years 
+                            of age, The parties are not within prohibited degrees of relationship (varies by 
+                            personal law), and The marriage is solemnized according to customary rites and 
+                            ceremonies. For marriages under the Special Marriage Act, additional requirements 
+                            include: Notice of intended marriage, Publication of notice, and Objection period 
+                            before solemnization. Different personal laws (Hindu, Muslim, Christian, Parsi) 
+                            have specific requirements for valid marriage. Registration of marriage is increasingly 
+                            mandated to provide legal proof and protect rights, especially for women.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html#home">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Know Your Rights</h4>
+                <div class="footer-links">
+                    <a href="../rights/fundamentalrights.html">Fundamental Rights</a>
+                    <a href="../rights/legalprotections.html">Legal Protections</a>
+                    <a href="#">Family Law</a>
+                    <a href="../rights/propertyhousing.html">Property & Housing</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

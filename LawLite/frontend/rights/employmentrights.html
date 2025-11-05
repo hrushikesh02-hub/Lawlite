@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Rights - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #2563eb;
+            --page-accent-light: #3b82f6;
+            --page-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(37, 99, 235, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(37, 99, 235, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Employment Rights</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Employment Rights</span><br>
+                    Workplace Protections & Fair Treatment
+                </h1>
+                <p>
+                    Workplace rights including fair wages, safe working conditions, protection against discrimination, 
+                    and proper termination procedures. Know your rights to ensure dignity and fairness at work.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">💼</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Employment Rights</h2>
+            <p class="section-intro">
+                Comprehensive legal framework protecting workers' rights, ensuring fair treatment, safe working 
+                conditions, and protection against exploitation and discrimination in the workplace.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        Employment rights form the foundation of worker dignity and economic justice. These rights 
+                        ensure that employees receive fair compensation, work in safe environments, and are protected 
+                        from discrimination and arbitrary treatment. Understanding these rights is essential for 
+                        maintaining healthy employer-employee relationships.
+                    </p>
+
+                    <h3>Why Employment Rights Matter</h3>
+                    <p>
+                        Strong employment rights create productive workplaces, reduce exploitation, and promote 
+                        economic stability. They balance the power dynamic between employers and employees, ensuring 
+                        that workers can assert their rights without fear of retaliation. These protections also 
+                        contribute to overall social welfare and economic development.
+                    </p>
+
+                    <h3>Legal Framework</h3>
+                    <p>
+                        Employment rights are governed by various laws including Factories Act, Minimum Wages Act, 
+                        Industrial Disputes Act, Equal Remuneration Act, and specific state-level labor regulations. 
+                        The Constitution also provides fundamental rights against exploitation and discrimination 
+                        that apply to workplace situations.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖</div>
+                        <div class="highlight-text">
+                            <h4>Constitutional Protection</h4>
+                            <p>Fundamental rights against exploitation and discrimination apply to workplaces</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡</div>
+                        <div class="highlight-text">
+                            <h4>Comprehensive Laws</h4>
+                            <p>Multiple labor laws covering different aspects of employment relationships</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">👥</div>
+                        <div class="highlight-text">
+                            <h4>Equal Treatment</h4>
+                            <p>Protection against discrimination based on gender, religion, caste, or disability</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚡</div>
+                        <div class="highlight-text">
+                            <h4>Quick Redressal</h4>
+                            <p>Special labor courts and tribunals for speedy resolution of disputes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Essential Employment Rights</h2>
+            <p class="section-intro">
+                Fundamental workplace rights and protections for all employees across various sectors
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Minimum Wage and Payment Rights</h3>
+                    <p>
+                        Right to receive minimum wages as prescribed by law, timely payment of salaries, overtime 
+                        compensation, and various allowances. Protection against unauthorized deductions and 
+                        right to receive full settlement upon termination. Different wage rates for skilled, 
+                        semi-skilled, and unskilled workers.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Safe Workplace Conditions</h3>
+                    <p>
+                        Right to work in safe and healthy environment free from hazards. Proper safety equipment, 
+                        first aid facilities, and emergency protocols. Protection from dangerous machinery and 
+                        hazardous substances. Regular health check-ups for workers in hazardous occupations and 
+                        compensation for occupational diseases.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Anti-Discrimination Protections</h3>
+                    <p>
+                        Protection against discrimination based on gender, religion, caste, race, disability, 
+                        or sexual orientation. Equal pay for equal work, prevention of sexual harassment, and 
+                        reasonable accommodations for persons with disabilities. Special protections for women 
+                        employees including maternity benefits and creche facilities.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Wrongful Termination Remedies</h3>
+                    <p>
+                        Protection against arbitrary dismissal and unfair termination procedures. Right to 
+                        notice period or pay in lieu, retrenchment compensation, and inquiry proceedings for 
+                        disciplinary actions. Remedies include reinstatement, back wages, and compensation for 
+                        illegal termination through labor courts.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Working Hours and Leave Rights</h3>
+                    <p>
+                        Regulation of working hours, overtime limits, weekly holidays, and earned leave. 
+                        Provisions for sick leave, casual leave, and maternity/paternity leave. Night shift 
+                        protections for women workers and special provisions for young workers. Right to 
+                        reasonable working hours and adequate rest periods.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Social Security and Benefits</h3>
+                    <p>
+                        Access to provident fund, employee state insurance, gratuity, and pension benefits. 
+                        Coverage under various social security schemes for healthcare, disability, and old age. 
+                        Maternity benefits, medical insurance, and compensation for employment injuries. 
+                        Statutory requirements for employer contributions to social security funds.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Employment Rights Cases</h2>
+            <p class="section-intro">
+                Historic judgments that strengthened workers' rights and workplace protections in India
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Vishaka v. State of Rajasthan (1997)</h3>
+                <p class="case-content">
+                    This landmark case addressed sexual harassment at workplace and established the Vishaka Guidelines. 
+                    The Supreme Court held that sexual harassment violates fundamental rights to equality and dignity 
+                    under Articles 14, 15, and 21 of the Constitution, and laid down mandatory guidelines for employers.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established mandatory guidelines for prevention of sexual harassment 
+                    at workplace, leading to the Sexual Harassment of Women at Workplace (Prevention, Prohibition 
+                    and Redressal) Act, 2013.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Randhir Singh v. Union of India (1982)</h3>
+                <p class="case-content">
+                    The Supreme Court recognized the principle of "equal pay for equal work" as a constitutional 
+                    goal under Articles 14 and 16. The court held that although not a fundamental right, the 
+                    principle must be applied to temporary employees doing the same work as permanent employees.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established that the principle of equal pay for equal work is 
+                    deducible from Articles 14 and 16 and must be applied by courts, strengthening wage equality.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Workmen of Meenakshi Mills Ltd. v. Meenakshi Mills Ltd. (1992)</h3>
+                <p class="case-content">
+                    This case dealt with the rights of workmen during layoff and retrenchment. The Supreme Court 
+                    emphasized that the provisions of Industrial Disputes Act are social welfare legislation 
+                    meant to protect workmen from arbitrary actions of employers.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Strengthened protections against arbitrary retrenchment and 
+                    established that compliance with statutory procedures is mandatory for valid termination.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about employment rights, workplace protections, and legal remedies
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the minimum wage and how is it determined?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Minimum wage is the lowest remuneration that employers can legally pay their workers. 
+                            It is determined by state governments through Minimum Wages Advisory Boards considering 
+                            factors like skill level, nature of work, cost of living, and prevailing wages. Different 
+                            rates apply for unskilled, semi-skilled, skilled, and highly skilled workers across 
+                            various scheduled employments. Employers must display wage rates prominently and maintain 
+                            proper wage records.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What constitutes a safe working environment?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            A safe working environment includes: Proper ventilation and lighting, Clean drinking water 
+                            and sanitation facilities, Safety equipment and protective gear, First aid facilities, 
+                            Fire safety measures, Machine guards and safety devices, Protection from hazardous 
+                            substances, Emergency exits and protocols, Regular safety training, and Medical facilities 
+                            for emergencies. The Factories Act and other labor laws specify detailed safety requirements 
+                            for different types of workplaces.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What protections exist against workplace discrimination?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Protections against workplace discrimination include: Equal Remuneration Act ensuring 
+                            equal pay for equal work, Maternity Benefit Act protecting women's employment during 
+                            pregnancy, Persons with Disabilities Act requiring reasonable accommodations, Prevention 
+                            of Sexual Harassment Act providing safe workplace for women, Constitutional provisions 
+                            against discrimination based on religion, race, caste, sex, or place of birth, and 
+                            Various state laws prohibiting discrimination in employment. Employers cannot discriminate 
+                            in hiring, promotion, or termination decisions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What constitutes wrongful termination?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Wrongful termination includes: Dismissal without proper notice or compensation, 
+                            Termination for discriminatory reasons, Retaliation for exercising legal rights 
+                            (whistleblowing, union activities), Termination violating natural justice principles, 
+                            Dismissal without proper inquiry for misconduct, Retrenchment without following 
+                            statutory procedures, and Termination during protected periods (maternity leave, 
+                            pending inquiry). Remedies include reinstatement with back wages, compensation, 
+                            and legal action through labor courts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the legal working hours and overtime provisions?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Standard working hours are 8-9 hours per day and 48 hours per week under most labor laws. 
+                            Overtime is payable at twice the ordinary rate of wages for work beyond these limits. 
+                            Workers are entitled to: Weekly holiday (usually Sunday), Rest intervals during shifts 
+                            (typically 30 minutes after 5 hours), Limited continuous work periods, and Night shift 
+                            allowances where applicable. Different rules may apply to specific industries like 
+                            factories, mines, plantations, and IT companies under respective state regulations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can employees enforce their employment rights?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Employees can enforce rights through: Internal complaints committees for harassment 
+                            and grievances, Labor commissioners and inspectors for wage and safety violations, 
+                            Labor courts and industrial tribunals for disputes and wrongful termination, Civil 
+                            courts for contractual and discrimination matters, Human rights commissions for 
+                            serious violations, Trade unions and collective bargaining, and Legal aid services 
+                            for low-income workers. Documentation of employment terms, communications, and 
+                            incidents is crucial for successful enforcement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions 
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal Services</h4>
+                <div class="footer-links">
+                    <a href="#">Criminal Law</a>
+                    <a href="#">Family Law</a>
+                    <a href="#">Corporate Law</a>
+                    <a href="#">Civil Law</a>
+                    <a href="#">Juvenile Law</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Legal Directory</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy & Data - LawLite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/style.css">
+    <style>
+        /* Page-specific accent colors */
+        :root {
+            --page-accent: #7e22ce;
+            --page-accent-light: #a855f7;
+            --page-gradient: linear-gradient(135deg, #7e22ce 0%, #a855f7 100%);
+        }
+
+        /* Hero Banner */
+        .detail-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(126, 34, 206, 0.05), rgba(168, 85, 247, 0.05));
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-gradient);
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-accent {
+            color: var(--page-accent);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-illustration {
+            font-size: 15rem;
+            text-align: center;
+            opacity: 0.8;
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(126, 34, 206, 0.1);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--page-accent);
+        }
+
+        .breadcrumb-current {
+            color: var(--page-accent);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Key Rights Grid */
+        .rights-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .right-card {
+            background: var(--bg-primary);
+            border: 2px solid rgba(126, 34, 206, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--page-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .right-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--page-accent);
+        }
+
+        .right-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .right-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .right-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .right-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--page-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            color: var(--page-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-outcome {
+            background: rgba(126, 34, 206, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-outcome strong {
+            color: var(--page-accent);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(126, 34, 206, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(126, 34, 206, 0.05);
+            color: var(--page-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.125rem;
+        }
+
+        .overview-text h3 {
+            color: var(--page-accent);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .overview-highlights {
+            background: linear-gradient(135deg, rgba(126, 34, 206, 0.05), rgba(168, 85, 247, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--page-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                font-size: 8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">LAWLITE</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../home/index.html" class="nav-link">Home</a></li>
+                <li><a href="../home/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../home/index.html#rights" class="nav-link">Know Your Rights</a></li>
+                <li><a href="../home/index.html#about" class="nav-link">About</a></li>
+                <li><a href="../home/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+                <button class="cta-button" onclick="window.location.href='../home/index.html#form-section'">Ask Legal Help</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="../home/index.html">Home</a>
+            <span>›</span>
+            <a href="../home/index.html#rights">Know Your Rights</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Privacy & Data</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="hero-accent">Privacy & Data</span><br>
+                    Digital Rights & Protections
+                </h1>
+                <p>
+                    Digital rights and privacy protections in the modern age including data protection, 
+                    online privacy, and cyber security laws. Secure your digital footprint and personal information.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='../home/index.html#contact'">
+                        Get Legal Help
+                    </button>
+                </div>
+            </div>
+            <div class="hero-illustration">🔒</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Understanding Digital Privacy Rights</h2>
+            <p class="section-intro">
+                Comprehensive legal framework protecting your digital rights, personal data, online privacy, 
+                and cybersecurity in the modern digital age.
+            </p>
+
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>
+                        In today's digital world, privacy and data protection have become fundamental rights. 
+                        These rights ensure that individuals maintain control over their personal information, 
+                        digital identity, and online activities while navigating the complex digital ecosystem.
+                    </p>
+
+                    <h3>Why Digital Privacy Matters</h3>
+                    <p>
+                        Digital privacy rights protect individuals from unauthorized surveillance, data breaches, 
+                        identity theft, and misuse of personal information. They ensure autonomy in the digital 
+                        space and prevent exploitation through unauthorized data collection and processing.
+                    </p>
+
+                    <h3>Legal Framework</h3>
+                    <p>
+                        Digital rights are protected under the Constitution's right to privacy, Information 
+                        Technology Act, 2000, and the Digital Personal Data Protection Act, 2023. These laws 
+                        establish principles for data processing, individual rights, and organizational obligations 
+                        in the digital realm.
+                    </p>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚖</div>
+                        <div class="highlight-text">
+                            <h4>Constitutional Right</h4>
+                            <p>Right to privacy recognized as fundamental right under Article 21</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡</div>
+                        <div class="highlight-text">
+                            <h4>Comprehensive Legislation</h4>
+                            <p>Digital Personal Data Protection Act, 2023 provides comprehensive framework</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🔐</div>
+                        <div class="highlight-text">
+                            <h4>Data Sovereignty</h4>
+                            <p>Control over personal data and its cross-border transfer</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚡</div>
+                        <div class="highlight-text">
+                            <h4>Quick Remedies</h4>
+                            <p>Special provisions for data breach reporting and compensation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Rights Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Essential Digital Privacy Rights</h2>
+            <p class="section-intro">
+                Fundamental rights and protections for your digital presence and personal data
+            </p>
+
+            <div class="rights-grid-detail">
+                <div class="right-card">
+                    <div class="right-number">1</div>
+                    <h3>Personal Data Protection</h3>
+                    <p>
+                        Right to control how your personal data is collected, processed, stored, and shared. 
+                        Includes rights to access, correction, erasure, and data portability. Organizations 
+                        must obtain explicit consent and process data only for specified lawful purposes with 
+                        adequate security safeguards.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">2</div>
+                    <h3>Right to Digital Privacy</h3>
+                    <p>
+                        Constitutional protection against unauthorized surveillance and intrusion into digital 
+                        privacy. Includes protection of communications, online activities, and digital footprint. 
+                        Right to be forgotten and control over digital identity. Protection from mass surveillance 
+                        and unauthorized data collection.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">3</div>
+                    <h3>Cyber Crime Protections</h3>
+                    <p>
+                        Legal protections against cyber crimes including hacking, identity theft, cyber stalking, 
+                        and online fraud. Special provisions under Information Technology Act for compensation 
+                        and punishment. Rights to secure digital transactions and protection from malicious 
+                        software and phishing attacks.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">4</div>
+                    <h3>Digital Consent and Permissions</h3>
+                    <p>
+                        Requirement for free, informed, specific, and clear consent for data processing. Right 
+                        to withdraw consent and opt-out of data processing. Transparency about data usage and 
+                        sharing practices. Protection against deceptive consent mechanisms and dark patterns 
+                        in digital interfaces.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">5</div>
+                    <h3>Data Breach Notifications</h3>
+                    <p>
+                        Right to be informed about data breaches that may affect your personal information. 
+                        Organizations must notify individuals and authorities about significant data breaches 
+                        promptly. Rights to compensation for harm caused by data breaches and inadequate 
+                        security measures.
+                    </p>
+                </div>
+
+                <div class="right-card">
+                    <div class="right-number">6</div>
+                    <h3>Online Reputation and Identity</h3>
+                    <p>
+                        Protection of digital reputation and online identity. Rights to address defamatory 
+                        content, fake profiles, and unauthorized use of personal information online. Legal 
+                        remedies for cyber bullying, online harassment, and identity theft. Control over 
+                        digital legacy and posthumous data handling.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Landmark Digital Privacy Cases</h2>
+            <p class="section-intro">
+                Historic judgments that established and strengthened digital privacy rights in India
+            </p>
+
+            <div class="case-study">
+                <h3 class="case-title">Justice K.S. Puttaswamy v. Union of India (2017)</h3>
+                <p class="case-content">
+                    This landmark case recognized the right to privacy as a fundamental right under Article 21 
+                    of the Constitution. The Supreme Court held that privacy is intrinsic to life and liberty 
+                    and encompasses personal intimacies, the home, and information privacy.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Established privacy as a fundamental right, laying the constitutional 
+                    foundation for data protection laws and limiting state surveillance powers.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Shreya Singhal v. Union of India (2015)</h3>
+                <p class="case-content">
+                    This case challenged the constitutional validity of Section 66A of the Information Technology 
+                    Act, which criminalized sending "offensive" messages online. The Supreme Court struck down 
+                    the provision for being vague and violating freedom of speech and expression.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Protected online free speech and established limits on state power 
+                    to regulate digital communications, strengthening digital rights.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3 class="case-title">Facebook v. Union of India (2019)</h3>
+                <p class="case-content">
+                    This case addressed issues of data localization and privacy protections for Indian users. 
+                    The Delhi High Court examined whether foreign companies like Facebook must comply with 
+                    Indian data protection standards and store data locally.
+                </p>
+                <div class="case-outcome">
+                    <strong>Outcome:</strong> Emphasized the need for robust data protection laws and set 
+                    precedents for cross-border data transfer regulations and user privacy protections.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="section-intro">
+                Common questions about digital privacy, data protection, and cyber security rights
+            </p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What constitutes personal data under Indian law?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Personal data includes any data that can identify an individual either directly or 
+                            indirectly. This includes: Name, address, contact details, Aadhaar number, PAN, 
+                            Financial information, Health records, Biometric data, Location data, Online identifiers 
+                            (IP addresses, cookies), Religious or political beliefs, Sexual orientation, and 
+                            Any other information that can identify a person. The Digital Personal Data Protection 
+                            Act, 2023 provides comprehensive definition and special categories for sensitive data.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are my rights regarding data protection?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Under the Digital Personal Data Protection Act, 2023, you have several rights: Right 
+                            to access your personal data, Right to correction and erasure of inaccurate data, 
+                            Right to grievance redressal, Right to nominate someone to exercise your rights, 
+                            Right to withdraw consent, Right to know about data processing activities, and Right 
+                            to data portability. Data fiduciaries must respond to your requests within specified 
+                            timeframes and cannot discriminate for exercising these rights.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What constitutes valid digital consent?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Valid digital consent must be: Free (without coercion), Informed (clear about purposes), 
+                            Specific (for particular processing), Unambiguous (clear affirmative action), and 
+                            Limited (for specified period). Consent cannot be obtained through deceptive practices 
+                            or dark patterns. For children and persons with disabilities, consent must be obtained 
+                            from parents/guardians. Consent must be as easy to withdraw as it is to give, and 
+                            organizations must provide clear opt-out mechanisms.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I do if my data is breached?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            If you suspect a data breach: Immediately change passwords for affected accounts, 
+                            Enable two-factor authentication, Monitor financial statements for suspicious activity, 
+                            Place fraud alerts with credit bureaus, Report to the organization that experienced 
+                            the breach, File complaint with the Data Protection Board under DPDPA, 2023, Report 
+                            cyber crimes to cyber crime cells, Document all communications and evidence, and 
+                            Consider legal action for compensation if harm occurred. Organizations must notify 
+                            you and authorities about significant breaches.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What protections exist against cyber crimes?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Protections against cyber crimes include: Information Technology Act provisions for 
+                            hacking, data theft, and cyber fraud, Special cyber crime cells in police departments, 
+                            National Cyber Crime Reporting Portal, Compensation for victims under IT Act, Criminal 
+                            penalties for cyber stalking and harassment, Protection from phishing and online scams, 
+                            Rights to secure digital transactions, and Special courts for cyber crime cases. 
+                            The Indian Penal Code also applies to many cyber offenses with enhanced penalties.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I protect my digital privacy?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            To protect digital privacy: Use strong, unique passwords and password managers, 
+                            Enable two-factor authentication, Regularly update software and security patches, 
+                            Be cautious about sharing personal information online, Review privacy settings on 
+                            social media and apps, Use VPN for public Wi-Fi, Encrypt sensitive communications, 
+                            Read privacy policies before consenting, Use ad blockers and anti-tracking tools, 
+                            Monitor digital footprint regularly, Secure devices with biometric authentication, 
+                            and Be aware of phishing attempts and social engineering tactics. Exercise your 
+                            rights under data protection laws regularly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚖️</span>
+                    <span>LAWLITE</span>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in legal services. We provide comprehensive legal solutions 
+                    with integrity, expertise, and commitment to justice for all.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="../home/index.html">Home</a>
+                    <a href="../home/index.html#services">Services</a>
+                    <a href="../home/index.html#about">About Us</a>
+                    <a href="../home/index.html#contact">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal Services</h4>
+                <div class="footer-links">
+                    <a href="#">Criminal Law</a>
+                    <a href="#">Family Law</a>
+                    <a href="#">Corporate Law</a>
+                    <a href="#">Civil Law</a>
+                    <a href="#">Juvenile Law</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#">Legal Articles</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Legal Directory</a>
+                    <a href="#">Emergency Help</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 LawLite. All rights reserved. Built with commitment to justice and equality.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.right-card, .case-study, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'var(--bg-primary)';
+                navbar.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

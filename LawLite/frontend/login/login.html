@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawLite - Login & Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <!-- Login Form -->
+    <div class="container" id="loginContainer">
+        <div class="logo-section">
+            <div class="logo">
+                <i class="fas fa-balance-scale"></i>
+                LawLite
+            </div>
+            <p class="subtitle">Your Legal Companion</p>
+        </div>
+
+        <h2>Welcome Back</h2>
+
+        <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="handleLogin()" id="loginBtn">
+            Sign In
+        </button>
+
+        <div class="switch-text">
+            Don't have an account? <button onclick="switchToRegister()">Create Account</button>
+        </div>
+    </div>
+
+    <!-- Register Form -->
+    <div class="container hidden" id="registerContainer">
+        <div class="logo-section">
+            <div class="logo">
+                <i class="fas fa-balance-scale"></i>
+                LawLite
+            </div>
+            <p class="subtitle">Join Our Legal Community</p>
+        </div>
+
+        <h2>Create Account</h2>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" placeholder="John" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" placeholder="Doe" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="25" min="18" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="1234567890" maxlength="10" oninput="formatPhoneInput()">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" placeholder="john.doe@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password <span class="required">*</span></label>
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Create a strong password"
+                    oninput="checkPasswordStrength()" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div id="passwordStrength" class="password-strength"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+            <div class="password-wrapper">
+                <input type="password" id="confirmPassword" placeholder="Re-enter your password"
+                    oninput="checkPasswordMatch()" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div id="passwordMatch" class="password-match"></div>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="agreeTerms">
+            <label for="agreeTerms">I agree to the Terms & Conditions <span class="required">*</span></label>
+        </div>
+
+        <button class="btn btn-primary" onclick="handleRegister()" id="registerBtn">
+            Create Account
+        </button>
+
+        <div class="switch-text">
+            Already have an account? <button onclick="switchToLogin()">Sign In</button>
+        </div>
+    </div>
+
+    <!-- Email Verification Modal -->
+    <div class="modal" id="verificationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Verify Your Email</h3>
+                <button class="close-modal" onclick="closeVerificationModal()">×</button>
+            </div>
+            <div class="form-group">
+                <p>We've sent a 6-digit verification code to:</p>
+                <p style="text-align: center; font-weight: bold; font-size: 1.1rem; color: #1e40af;"
+                    id="verifyEmailAddress"></p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-top: 10px;">
+                    Check your inbox and enter the code below. The code will expire in 10 minutes.
+                </p>
+                <label for="otpInput">Verification Code</label>
+                <input type="text" id="otpInput" maxlength="6" placeholder="Enter 6-digit code"
+                    style="text-align: center; font-size: 1.2rem; letter-spacing: 5px; font-weight: bold;">
+                <div id="otpError" style="color: #ef4444; font-size: 0.9rem; margin-top: 5px; display: none;"></div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="resendVerificationCode()" id="resendBtn">
+                    <i class="fas fa-redo"></i> Resend Code
+                </button>
+                <button type="button" class="btn-primary" onclick="verifyEmail()" id="verifyBtn">
+                    <i class="fas fa-check"></i> Verify Email
+                </button>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <p style="font-size: 0.8rem; color: #64748b;">
+                    Didn't receive the email? Check your spam folder or
+                    <a href="#" onclick="resendVerificationCode()" style="color: #1e40af;">resend the code</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+    <script src="../session.js"></script>
+</body>
+
+</html>
