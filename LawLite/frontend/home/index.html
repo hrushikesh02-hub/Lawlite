@@ -23,49 +23,53 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-icon">⚖️</span>
-                <span class="logo-text">LAWLITE</span>
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-icon">⚖️</span>
+            <span class="logo-text">LAWLITE</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#rights" class="nav-link">Know Your Rights</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li id="loginNavItem"><a href="/Frontend/login/login.html" class="nav-link">Login</a></li>
+        </ul>
+        
+        <!-- Improved Language Selector -->
+        <div class="nav-actions">
+            <div class="language-selector">
+                <div id="google_translate_element"></div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#rights" class="nav-link">Know Your Rights</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <!-- Login link will be hidden when user is logged in -->
-                <li id="loginNavItem"><a href="/Frontend/login/login.html" class="nav-link">Login</a></li>
-            </ul>
-              <div id="google_translate_element" style="float: right; margin: 10px;"></div>
-            <div class="nav-actions">
-                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+            
+            <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
 
-                <!-- Profile Icon (hidden by default) -->
-                <div class="profile-icon-container" id="profileIconContainer" style="display: none;">
-                    <div class="profile-dropdown">
-                        <button class="profile-icon-btn" id="profileIconBtn">
-                            <i class="fas fa-user-circle"></i>
-                        </button>
-                        <div class="dropdown-menu" id="profileDropdown">
-                            <a href="/Frontend/home/profilepage.html" class="dropdown-item">
-                                <i class="fas fa-user"></i> My Profile
-                            </a>
-                            <a href="#" class="dropdown-item" id="logoutBtn">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </div>
+            <!-- Profile Icon -->
+            <div class="profile-icon-container" id="profileIconContainer" style="display: none;">
+                <div class="profile-dropdown">
+                    <button class="profile-icon-btn" id="profileIconBtn">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="/Frontend/home/profilepage.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
                     </div>
                 </div>
-
-                <button class="cta-button"
-                    onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });">
-                    Ask Legal Help
-                </button>
             </div>
+
+            <button class="cta-button"
+                onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });">
+                Ask Legal Help
+            </button>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
@@ -126,29 +130,6 @@
         </div>
     </section>
 
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="search-container">
-            <h2 class="search-title">Search Legal Information</h2>
-            <p class="search-subtitle">Find legal information, precedents, and policies instantly with our advanced
-                AI-powered search</p>
-            <div class="search-wrapper">
-                <div class="search-box">
-                    <div class="search-icon">🔍</div>
-                    <input type="text" placeholder="Enter law, policy, or keyword..." class="search-input"
-                        id="searchInput">
-                    <button type="button" class="search-btn">Search</button>
-                </div>
-                <div class="search-suggestions">
-                    <span class="suggestion-label">Popular searches:</span>
-                    <button class="suggestion-tag">Criminal Law</button>
-                    <button class="suggestion-tag">Family Law</button>
-                    <button class="suggestion-tag">Corporate Law</button>
-                    <button class="suggestion-tag">Civil Rights</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Know Your Rights Section -->
     <section class="rights-section" id="rights">
@@ -551,40 +532,60 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section class="form-section" id="form-section">
-        <div class="contact-form-wrapper">
-            <form class="form" id="contactForm">
-                <div id="formMessage" class="form-message"></div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <span class="form-error">Please enter your name</span>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <span class="form-error">Please enter a valid email</span>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="How can we help you with legal information?"
-                        required></textarea>
-                    <span class="form-error">Please enter your message</span>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-            <div class="contact-info">
-                <div class="justice-illustration">⚖</div>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">f</a>
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                    <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="YouTube">▶</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                </div>
+<section class="feedback-section" id="feedback-section">
+    <div class="feedback-form-wrapper">
+        <form class="form" id="feedbackForm">
+            <div id="formMessage" class="form-message"></div>
+
+            <h2 class="form-title">We value your feedback</h2>
+            <p class="form-subtitle">Your thoughts help us improve Lawlite and serve you better.</p>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                <span class="form-error">Please enter your name</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                <span class="form-error">Please enter a valid email</span>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">How satisfied are you with our platform?</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>Select rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Good</option>
+                    <option value="3">⭐⭐⭐ Average</option>
+                    <option value="2">⭐⭐ Poor</option>
+                    <option value="1">⭐ Very Poor</option>
+                </select>
+                <span class="form-error">Please select a rating</span>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback">Your Feedback</label>
+                <textarea id="feedback" name="feedback" placeholder="Share your experience or suggestions..." required></textarea>
+                <span class="form-error">Please enter your feedback</span>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+
+        <div class="contact-info">
+            <div class="justice-illustration">⚖️</div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="YouTube">▶</a>
+                <a href="#" aria-label="Instagram">📷</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -607,29 +608,17 @@
                     <a href="#services">Services</a>
                     <a href="#about">About Us</a>
                     <a href="#contact">Contact</a>
-                    <a href="#">Privacy Policy</a>
                 </div>
             </div>
 
             <div class="footer-section">
                 <h4>Legal Services</h4>
                 <div class="footer-links">
-                    <a href="#">Criminal Law</a>
-                    <a href="#">Family Law</a>
-                    <a href="#">Corporate Law</a>
-                    <a href="#">Civil Law</a>
-                    <a href="#">Juvenile Law</a>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <div class="footer-links">
-                    <a href="#">Legal Articles</a>
-                    <a href="#">FAQs</a>
-                    <a href="#">Case Studies</a>
-                    <a href="#">Legal Directory</a>
-                    <a href="#">Emergency Help</a>
+                    <a href="../laws/criminallaw.html">Criminal Law</a>
+                    <a href="../laws/familylaw.html">Family Law</a>
+                    <a href="../laws/corporatelaw.html">Corporate Law</a>
+                    <a href="../laws/civillaw.html">Civil Law</a>
+                    <a href="../laws/juvenilelaw.html">Juvenile Law</a>
                 </div>
             </div>
         </div>
