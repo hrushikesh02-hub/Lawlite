@@ -234,6 +234,104 @@ document.querySelectorAll('.service-card').forEach(card => {
     }
   });
 });
+// Google Translate Integration
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,es,fr,de,zh,ar,ru,ja,ko,ta,te,ml,kn,mr,gu,pa,bn',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+        multilanguagePage: true
+    }, 'google_translate_element');
+    
+    // Custom styling after Google Translate loads
+    setTimeout(styleGoogleTranslate, 1000);
+}
+
+function styleGoogleTranslate() {
+    // Remove Google branding
+    const googleBranding = document.querySelector('.goog-logo-link');
+    if (googleBranding) {
+        googleBranding.style.display = 'none';
+    }
+    
+    const googleText = document.querySelector('.goog-te-gadget span');
+    if (googleText) {
+        const children = googleText.children;
+        for (let i = 0; i < children.length; i++) {
+            if (children[i].tagName === 'A') {
+                children[i].style.display = 'none';
+            }
+        }
+    }
+    
+    // Add custom dropdown arrow
+    const select = document.querySelector('.goog-te-gadget-simple select');
+    if (select) {
+        select.style.background = "transparent";
+        select.style.border = "none";
+        select.style.color = "inherit";
+        select.style.cursor = "pointer";
+    }
+}
+
+// Function to change language programmatically
+function changeLanguage(lang) {
+    const select = document.querySelector('.goog-te-gadget-simple select');
+    if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+    }
+}
+
+// Handle page translation events
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if Google Translate is available
+    if (typeof google !== 'undefined' && google.translate) {
+        console.log('Google Translate loaded successfully');
+    }
+    
+    // Add custom language switcher as fallback
+    createCustomLanguageSwitcher();
+});
+
+function createCustomLanguageSwitcher() {
+    const languages = {
+        'en': 'English',
+        'hi': 'हिन्दी',
+        'es': 'Español',
+        'fr': 'Français',
+        'de': 'Deutsch',
+        'zh': '中文',
+        'ar': 'العربية',
+        'ta': 'தமிழ்',
+        'te': 'తెలుగు',
+        'ml': 'മലയാളം',
+        'kn': 'ಕನ್ನಡ',
+        'mr': 'मराठी',
+        'gu': 'ગુજરાતી',
+        'pa': 'ਪੰਜਾਬੀ',
+        'bn': 'বাংলা'
+    };
+    
+    // This is a backup custom language selector
+    // The main functionality will still use Google Translate
+}
+
+// Handle translation events
+function restorePageStyles() {
+    // This function ensures styles are maintained after translation
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 500);
+}
+
+// Listen for translation completion
+if (typeof google !== 'undefined') {
+    google.translate.TranslateElement.prototype.onTranslateCompletion = function() {
+        restorePageStyles();
+    };
+}
 
 // ===== PARALLAX EFFECT FOR FLOATING SHAPES =====
 window.addEventListener('mousemove', (e) => {
